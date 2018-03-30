@@ -7,7 +7,7 @@
 #
 # - $FZF_TMUX               (default: 0)
 # - $FZF_TMUX_HEIGHT        (default: '40%')
-# - $FZF_COMPLETION_TRIGGER (default: '**')
+# - $FZF_COMPLETION_TRIGGER (default: ';;')
 # - $FZF_COMPLETION_OPTS    (default: empty)
 
 # To use custom commands instead of find, override _fzf_compgen_{path,dir}
@@ -156,7 +156,7 @@ fzf-completion() {
   cmd=${tokens[1]}
 
   # Explicitly allow for empty trigger.
-  trigger=${FZF_COMPLETION_TRIGGER-'**'}
+  trigger=${FZF_COMPLETION_TRIGGER-';;'}
   [ -z "$trigger" -a ${LBUFFER[-1]} = ' ' ] && tokens+=("")
 
   tail=${LBUFFER:$(( ${#LBUFFER} - ${#trigger} ))}

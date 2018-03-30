@@ -7,7 +7,7 @@
 #
 # - $FZF_TMUX               (default: 0)
 # - $FZF_TMUX_HEIGHT        (default: '40%')
-# - $FZF_COMPLETION_TRIGGER (default: '**')
+# - $FZF_COMPLETION_TRIGGER (default: ';;')
 # - $FZF_COMPLETION_OPTS    (default: empty)
 
 # To use custom commands instead of find, override _fzf_compgen_{path,dir}
@@ -143,7 +143,7 @@ __fzf_generic_path_completion() {
   fzf="$(__fzfcmd_complete)"
   cmd="${COMP_WORDS[0]//[^A-Za-z0-9_=]/_}"
   COMPREPLY=()
-  trigger=${FZF_COMPLETION_TRIGGER-'**'}
+  trigger=${FZF_COMPLETION_TRIGGER-';;'}
   cur="${COMP_WORDS[COMP_CWORD]}"
   if [[ "$cur" == *"$trigger" ]]; then
     base=${cur:0:${#cur}-${#trigger}}
@@ -187,7 +187,7 @@ _fzf_complete() {
   fzf="$(__fzfcmd_complete)"
 
   cmd="${COMP_WORDS[0]//[^A-Za-z0-9_=]/_}"
-  trigger=${FZF_COMPLETION_TRIGGER-'**'}
+  trigger=${FZF_COMPLETION_TRIGGER-';;'}
   cur="${COMP_WORDS[COMP_CWORD]}"
   if [[ "$cur" == *"$trigger" ]]; then
     cur=${cur:0:${#cur}-${#trigger}}
